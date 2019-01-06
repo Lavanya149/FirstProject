@@ -1,1 +1,1 @@
-water quantity : 60 ML
+water quantity : 80 ML
