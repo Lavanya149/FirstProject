@@ -16,4 +16,45 @@ steps:
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    displayName: 'Run a multi-line script'
+    mkdir temp
+    echo $"
+    apiVersion: '2022-11-28'
+    location: eastus
+    name: file-share-demo
+    properties:
+    containers:
+    - name: hellofiles
+    properties:
+      environmentVariables: []
+      image: mcr.microsoft.com/azuredocs/aci-hellofiles
+      ports:
+      - port: 80
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      volumeMounts:
+      - mountPath: /aci/logs/
+        name: parasoftfiles
+    osType: Linux
+    restartPolicy: Always
+    ipAddress:
+    type: Public
+    ports:
+      - port: 80
+    dnsNameLabel: aci-demo
+    volumes:
+    - name: parasoftfiles
+    azureFile:
+      sharename: parasoftfiles
+      storageAccountName: adoproject
+      storageAccountKey: liZ+KvFZBAgxHMDkb8z7MdV9NPFfma0M0EjtgFLG2Yk2InBwwkJXjGfpe5r6Ljexn8XKOnif1rrg+AStdt6c/w==
+    tags: {}
+    type: Microsoft.ContainerInstance/containerGroups" >> temp/deploy-aci.yaml
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Pay-As-You-Go(1)(c7a8da78-e630-465a-9166-347c7d4150ac)'
+    scriptType: 'bash'
+    scriptLocation: 'scriptPath'
+    scriptPath: '/aci/logs/deploy-aci.yaml'
