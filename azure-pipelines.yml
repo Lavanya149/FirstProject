@@ -62,3 +62,4 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'ScriptPath'
     scriptPath: '/home/vsts/work/1/s/temp/deploy-aci.yaml'
+    
