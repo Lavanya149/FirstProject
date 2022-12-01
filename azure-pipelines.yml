@@ -52,7 +52,10 @@ steps:
       storageAccountKey: liZ+KvFZBAgxHMDkb8z7MdV9NPFfma0M0EjtgFLG2Yk2InBwwkJXjGfpe5r6Ljexn8XKOnif1rrg+AStdt6c/w==
     tags: {}
     type: Microsoft.ContainerInstance/containerGroups" >> temp/deploy-aci.yaml
+    echo -e "\nDebug -- Verify workspace contents.\n"
     ls -R
+    echo -e "\nDebug -- Verify deploy-aci.yaml file contents."
+    cat temp/deploy-aci.yaml
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Pay-As-You-Go(1)(c7a8da78-e630-465a-9166-347c7d4150ac)'
