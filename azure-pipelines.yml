@@ -58,4 +58,4 @@ steps:
     azureSubscription: 'Pay-As-You-Go(1)(c7a8da78-e630-465a-9166-347c7d4150ac)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    scriptPath: './temp/deploy-aci.yaml'
+    scriptPath: '/home/vsts/work/1/s/temp/deploy-aci.yaml'
